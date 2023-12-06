@@ -37,6 +37,8 @@ const Topbar = () => {
       setTitle("사업문의 관리")
     else if(router.pathname.includes("/recommand"))
       setTitle("건의사항 관리")
+    else if(router.pathname.includes("/application"))
+      setTitle("지원서 목록")
     else if(router.pathname.includes("/message"))
       setTitle("사용자 문의")
     else 

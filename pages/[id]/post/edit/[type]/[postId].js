@@ -264,7 +264,7 @@ const Edit = () => {
             fullWidth
           />
         </Grid>
-        {type!=="announcement" && 
+        {type!=="announcement" && type!=="advertisement" && 
           <Grid item xs={12}>
             <h1>썸네일 이미지</h1>
             <DropperImage imgURL={values.thumbnailImg} setImgURL={handleImgUrl} path={`data/post/${type}/${postId}`} setLoading={setIsImageLoading} />

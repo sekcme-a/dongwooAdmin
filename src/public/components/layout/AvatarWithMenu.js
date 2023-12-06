@@ -17,6 +17,7 @@ import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import GroupIcon from '@mui/icons-material/Group';
+import Groups2OutlinedIcon from '@mui/icons-material/Groups2Outlined';
 
 const AvatarWithMenu = (props) => {
   const { team } = useData()
@@ -114,6 +115,12 @@ const AvatarWithMenu = (props) => {
           </ListItemIcon>
           Settings
         </MenuItem> */}
+        <MenuItem onClick={()=>router.push("/auth/hallway")} style={{height:"33px"}}>
+          <ListItemIcon>
+            <Groups2OutlinedIcon fontSize="small" />
+          </ListItemIcon>
+          팀 변경
+        </MenuItem>
         <MenuItem onClick={onLogoutClick} style={{height:"33px"}}>
           <ListItemIcon>
             <Logout fontSize="small" />

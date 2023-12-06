@@ -39,6 +39,7 @@ import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import { CircularProgress } from "@mui/material";
 import BorderColorIcon from '@mui/icons-material/BorderColor';
+import FindInPageOutlinedIcon from '@mui/icons-material/FindInPageOutlined';
 
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
@@ -87,6 +88,15 @@ const Navbar = () => {
     router.push(`/${team.teamId}/${loc}`)
   }
 
+
+  const onEditHomepageClick = () => {
+    if(team.teamId==="dongwoomain")
+      window.open("https://dongwoo-demo.netlify.app/admin/login")
+    else if(team.teamId==="development")
+      window.open("https://dongwoo-development.netlify.app/admin/login")
+  }
+
+  if(team)
   return (
     <div className={styles.main_container}>
       <div className={styles.header}>
@@ -145,65 +155,92 @@ const Navbar = () => {
           {openedItem===1 ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
         <Collapse in={openedItem===1} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/announcement")}>
-              <ListItemIcon>
-                <CampaignOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText primary="공지사항" />
-            </ListItemButton>
-          </List>
-          <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/news")}>
-              <ListItemIcon>
-                <NewspaperIcon />
-              </ListItemIcon>
-              <ListItemText primary="동행뉴스" />
-            </ListItemButton>
-          </List>
-          <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/gallery")}>
-              <ListItemIcon>
-                <NewspaperIcon />
-              </ListItemIcon>
-              <ListItemText primary="동우사보" />
-            </ListItemButton>
-          </List>
-          <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/24h")}>
-              <ListItemIcon>
-                <YouTubeIcon />
-              </ListItemIcon>
-              <ListItemText primary="동우24시" />
-            </ListItemButton>
-          </List>
+          {team.teamId==="dongwoomain" && 
+          <>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/announcement")}>
+                <ListItemIcon>
+                  <CampaignOutlinedIcon />
+                </ListItemIcon>
+                <ListItemText primary="공지사항" />
+              </ListItemButton>
+            </List>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/news")}>
+                <ListItemIcon>
+                  <NewspaperIcon />
+                </ListItemIcon>
+                <ListItemText primary="동행뉴스" />
+              </ListItemButton>
+            </List>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/gallery")}>
+                <ListItemIcon>
+                  <NewspaperIcon />
+                </ListItemIcon>
+                <ListItemText primary="동우사보" />
+              </ListItemButton>
+            </List>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/24h")}>
+                <ListItemIcon>
+                  <YouTubeIcon />
+                </ListItemIcon>
+                <ListItemText primary="동우24시" />
+              </ListItemButton>
+            </List>
+          </>
+          }
+          {team.teamId==="development" && 
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/advertisement")}>
+                <ListItemIcon>
+                  <CampaignOutlinedIcon />
+                </ListItemIcon>
+                <ListItemText primary="채용공고" />
+              </ListItemButton>
+            </List>
+          }
         </Collapse>
 
 
 
 
-        
+        {team.teamId==="development" && 
+          <>
+            <ListItemButton onClick={()=>onClick("application")}>
+              <ListItemIcon>
+                <FindInPageOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="지원서 목록" />
+            </ListItemButton>
+          </>
+        }
 
-        <ListItemButton onClick={() => window.open("https://dongwoo-demo.netlify.app/admin/login")} >
+        <ListItemButton onClick={onEditHomepageClick} >
           <ListItemIcon>
             <BorderColorIcon />
           </ListItemIcon>
           <ListItemText primary="홈페이지 편집" />
         </ListItemButton>
 
-        <ListItemButton onClick={()=>onClick("contact")}>
-          <ListItemIcon>
-            <HelpOutlineIcon />
-          </ListItemIcon>
-          <ListItemText primary="사업문의 관리" />
-        </ListItemButton>
+        {team.teamId==="dongwoomain" && 
+          <>
+            <ListItemButton onClick={()=>onClick("contact")}>
+              <ListItemIcon>
+                <HelpOutlineIcon />
+              </ListItemIcon>
+              <ListItemText primary="사업문의 관리" />
+            </ListItemButton>
 
-        <ListItemButton onClick={()=>onClick("recommand")}>
-          <ListItemIcon>
-            <HelpOutlineIcon />
-          </ListItemIcon>
-          <ListItemText primary="건의사항 관리" />
-        </ListItemButton>
+            <ListItemButton onClick={()=>onClick("recommand")}>
+              <ListItemIcon>
+                <HelpOutlineIcon />
+              </ListItemIcon>
+              <ListItemText primary="건의사항 관리" />
+            </ListItemButton>
+          </>
+        }
     </List>
     </div>
   )
