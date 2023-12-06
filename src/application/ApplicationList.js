@@ -60,7 +60,7 @@ const ApplicationList = ({list, type, countPerPage}) => {
   //**모니터 크기 측정 끝 */
 
   const handleItemclick = (postId) => {
-    router.push(`/${id}/message/${type}/${postId}`)
+    router.push(`/${id}/applicationdoc/${postId}`)
   }
 
   return(
@@ -68,7 +68,7 @@ const ApplicationList = ({list, type, countPerPage}) => {
       <div className={styles.header}>
         <div className={styles.no}>No</div>
         <div className={styles.name}>이름</div>
-        <div className={styles.title}>문의제목</div>
+        <div className={styles.title}>전화번호</div>
         <div className={styles.read}>확인유무</div>  
         <div className={styles.published_at}>작성일</div>
       </div>
@@ -77,7 +77,7 @@ const ApplicationList = ({list, type, countPerPage}) => {
           <li key={index} onClick={()=>handleItemclick(item.id)}>
             <div className={styles.no}>{list?.length-((10*(page-1))+index)}</div>
             <div className={styles.name}>{item.name}</div>  
-            <div className={styles.title}>{item.subject}</div>
+            <div className={styles.title}>{item.phoneNumber}</div>
             <div className={styles.read}>{item.unread ? "읽지않음":"읽음"}</div>
             <div className={styles.published_at}>{formatDateToYYYYMMDD(item?.createdAt.toDate())}</div>
           </li>

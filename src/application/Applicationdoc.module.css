@@ -1,0 +1,54 @@
+.main_container{
+  padding: 20px 20px 50px 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+}
+
+.main_container h1{
+  display: flex;
+  margin: 20px 0;
+  font-weight: bold;
+  font-size: 15px;
+  align-items: center;
+}
+.main_container h2{
+  font-weight: bold;
+  font-size: 15px;
+}
+.main_container p{
+  margin-left: 5px;
+  font-weight: normal;
+  white-space: pre-line;
+  font-size: 14px;
+}
+.main_container h2 p{
+  margin-top: 10px;
+}
+
+.button_container{
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+
+.folder_text{
+  font-size: 15px;
+
+}
+
+.folder .file{
+  padding: 4px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(222,222,222);
+}
+.folder .file a{
+  padding-left: 10px;
+  font-size:  14px;
+}
+.folder .file a:hover{
+  color: blue
+}

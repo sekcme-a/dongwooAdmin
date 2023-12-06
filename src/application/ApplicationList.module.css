@@ -12,7 +12,7 @@
 }
 .header .name{
   text-align: center;
-  width: 150px;
+  width: 450px;
 }
 .header .title{
   width: 100%;
@@ -20,7 +20,7 @@
 }
 .header .read{
   text-align: center;
-  width: 130px
+  width: 200px
 }
 .header .published_at{
   text-align: center;
@@ -49,12 +49,12 @@
   font-size: 15px;
 }
 .list li .name{
-  width: 150px;
+  width: 450px;
   text-align: center;
   font-size: 15px;
 }
 .list li .title{
-  text-align: start !important;
+  text-align: center !important;
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -68,7 +68,7 @@
 }
 .list li .read{
   text-align: center;
-  width: 130px;
+  width: 200px;
   /* color: #777; */
   font-size: 13px;
 }

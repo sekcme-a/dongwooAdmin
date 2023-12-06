@@ -9,18 +9,18 @@ const Application = () => {
   const router = useRouter()
   const {id} = router.query
   const [list, setList] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(()=>{
-    // const fetchData = async () => {
-    //   const query = await db.collection("team_admin").doc(id).collection("contact").orderBy("createdAt", "desc").get()
-    //   const docList = query.docs.map((doc) => {
-    //     return {...doc.data(), id: doc.id}
-    //   })  
-    //   setList(docList)
-    //   setIsLoading(false)
-    // }
-    // fetchData()
+    const fetchData = async () => {
+      const query = await db.collection("team").doc("development").collection("applications").orderBy("createdAt", "desc").get()
+      const docList = query.docs.map((doc) => {
+        return {...doc.data(), id: doc.id}
+      })  
+      setList(docList)
+      setIsLoading(false)
+    }
+    fetchData()
   },[])
   
   if(isLoading) return(
