@@ -5,6 +5,7 @@ import styles from "src/application/Applicationdoc.module.css"
 import { useEffect, useState } from "react"
 import { firestore as db } from "firebase/firebase"
 import DownloadIcon from '@mui/icons-material/Download';
+import useData from "context/data"
 
 const ApplicationDoc = () => {
   const router = useRouter()
@@ -12,13 +13,15 @@ const ApplicationDoc = () => {
   const [data, setData] = useState({})
   const [isLoading, setIsLoading] = useState(true)
 
+  const {team} = useData()
+
 
   useEffect(()=>{
     const fetchData = async () => {
-      const doc = await db.collection("team").doc("development").collection("applications").doc(postId).get()
+      const doc = await db.collection("team").doc(team.teamId).collection("applications").doc(postId).get()
       if(doc.exists){
         setData({...doc.data()})
-        await db.collection("team").doc("development").collection("applications").doc(postId).update({unread: false})
+        await db.collection("team").doc(team.teamId).collection("applications").doc(postId).update({unread: false})
         setIsLoading(false)
       } else {
         alert('삭제되거나 없는 문의입니다.')
@@ -32,7 +35,7 @@ const ApplicationDoc = () => {
 
   const onDeleteClick = async () => {
     if(confirm("정말로 삭제하시겠습니까?")){
-      await db.collection("team").doc("development").collection("applications").doc(postId).delete()
+      await db.collection("team").doc(team.teamId).collection("applications").doc(postId).delete()
       alert("성공적으로 삭제되었습니다.")
       router.back()
     }

@@ -94,6 +94,8 @@ const Navbar = () => {
       window.open("https://dongwoo-demo.netlify.app/admin/login")
     else if(team.teamId==="development")
       window.open("https://dongwoo-development.netlify.app/admin/login")
+    else if(team.teamId==="haejin")
+      window.open("https://haejin-general.netlify.app/admin/login")
   }
 
   if(team)
@@ -191,7 +193,7 @@ const Navbar = () => {
             </List>
           </>
           }
-          {team.teamId==="development" && 
+          {(team.teamId==="development"||team.teamId==="haejin") && 
             <List component="div" disablePadding>
               <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/advertisement")}>
                 <ListItemIcon>
@@ -206,7 +208,7 @@ const Navbar = () => {
 
 
 
-        {team.teamId==="development" && 
+        {(team.teamId==="development"||team.teamId==="haejin") && 
           <>
             <ListItemButton onClick={()=>onClick("application")}>
               <ListItemIcon>

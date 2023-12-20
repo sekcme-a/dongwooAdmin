@@ -4,16 +4,18 @@ import { useRouter } from "next/router";
 import { firestore as db } from "firebase/firebase";
 import { CircularProgress } from "@mui/material";
 import ApplicationList from "src/application/ApplicationList"
+import useData from "context/data";
 
 const Application = () => {
   const router = useRouter()
+  const {team} = useData()
   const {id} = router.query
   const [list, setList] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(()=>{
     const fetchData = async () => {
-      const query = await db.collection("team").doc("development").collection("applications").orderBy("createdAt", "desc").get()
+      const query = await db.collection("team").doc(team.teamId).collection("applications").orderBy("createdAt", "desc").get()
       const docList = query.docs.map((doc) => {
         return {...doc.data(), id: doc.id}
       })  

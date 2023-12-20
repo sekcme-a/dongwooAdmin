@@ -16,7 +16,7 @@ import DropperImage from "src/public/components/DropperImage"
 
 const Edit = () => {
   const {user, userData} = useUserData
-  const {posts, setPosts, fetch_post} = useData()
+  const {posts, setPosts, fetch_post,team} = useData()
   const router = useRouter()
   const {id, type,  postId} = router.query
 
@@ -35,7 +35,7 @@ const Edit = () => {
   const [values, setValues] = useState({
     content: "",
     title:"",
-    author:"동우개발",
+    author:"",
     condition:"미게제"
   })
   const onValuesChange = (prop) => (event) => {
@@ -258,7 +258,7 @@ const Edit = () => {
             variant="outlined"
             error={error.type==="author"}
             helperText={error.type!=="author" ? "" : error.message}
-            value={values.author || "동우개발"}
+            value={values?.author!=="" ? value.author : team.teamName}
             onChange={onValuesChange("author")}
             size="small"
             fullWidth
