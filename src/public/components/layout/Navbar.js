@@ -93,7 +93,7 @@ const Navbar = () => {
     if(team.teamId==="dongwoomain")
       window.open("https://dongwoo-demo.netlify.app/admin/login")
     else if(team.teamId==="development")
-      window.open("https://dongwoo-development.netlify.app/admin/login")
+      window.open("https://dongwoo-development-demo.netlify.app/admin/login")
     else if(team.teamId==="haejin")
       window.open("https://haejin-general.netlify.app/admin/login")
   }
