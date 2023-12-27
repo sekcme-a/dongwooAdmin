@@ -96,6 +96,8 @@ const Navbar = () => {
       window.open("https://dongwoo-development-demo.netlify.app/admin/login")
     else if(team.teamId==="haejin")
       window.open("https://haejin-general.netlify.app/admin/login")
+    else if(team.teamId==="samsung")
+      window.open("https://samsung-landscape.netlify.app/admin/login")
   }
 
   if(team)
@@ -189,6 +191,34 @@ const Navbar = () => {
                   <YouTubeIcon />
                 </ListItemIcon>
                 <ListItemText primary="동우24시" />
+              </ListItemButton>
+            </List>
+          </>
+          }
+          {team.teamId==="samsung" && 
+          <>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/all")}>
+                <ListItemIcon>
+                <NewspaperIcon />
+                </ListItemIcon>
+                <ListItemText primary="전체" />
+              </ListItemButton>
+            </List>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/construction")}>
+                <ListItemIcon>
+                  <NewspaperIcon />
+                </ListItemIcon>
+                <ListItemText primary="시공/관리" />
+              </ListItemButton>
+            </List>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/plan")}>
+                <ListItemIcon>
+                  <NewspaperIcon />
+                </ListItemIcon>
+                <ListItemText primary="계획/설계" />
               </ListItemButton>
             </List>
           </>

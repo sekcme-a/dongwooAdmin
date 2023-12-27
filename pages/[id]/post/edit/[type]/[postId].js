@@ -52,6 +52,15 @@ const Edit = () => {
   //for inputs*****
 
 
+  useEffect(()=> {
+    if(team&& team.teamName){
+      setValues(prev=> ({
+        ...prev,
+        author: team.teamName
+      }))
+    }
+  },[team])
+
   useEffect(()=>{
     const fetchData = async () => {
       await fetch_post(postId)
@@ -258,7 +267,7 @@ const Edit = () => {
             variant="outlined"
             error={error.type==="author"}
             helperText={error.type!=="author" ? "" : error.message}
-            value={values?.author!=="" ? value.author : team.teamName}
+            value={values.author}
             onChange={onValuesChange("author")}
             size="small"
             fullWidth
