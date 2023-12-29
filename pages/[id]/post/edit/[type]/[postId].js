@@ -171,14 +171,12 @@ const Edit = () => {
       ...values,
       files:  [...files,...prevFileList],
       savedAt: new Date,
-      publishedAt: new Date,
       type: type,
       condition: "게제중"
     } )
 
     batch.set(db.collection("team").doc(id).collection("thumbnails").doc(postId), {
       title: values.title,
-      publishedAt: new Date,
       savedAt: new Date,
       author: values.author,
       type: type,
@@ -191,7 +189,6 @@ const Edit = () => {
       ...values,
       files:  [...files,...prevFileList],
       savedAt: new Date,
-      publishedAt: new Date,
       condition: "게제중"
     })
     alert("성공적으로 게제되었습니다.")
