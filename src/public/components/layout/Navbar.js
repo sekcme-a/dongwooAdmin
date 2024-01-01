@@ -91,13 +91,13 @@ const Navbar = () => {
 
   const onEditHomepageClick = () => {
     if(team.teamId==="dongwoomain")
-      window.open("https://dongwoo-demo.netlify.app/admin/login")
+      window.open("https://동우그룹.kr/admin/login")
     else if(team.teamId==="development")
-      window.open("https://dongwoo-development-demo.netlify.app/admin/login")
+      window.open("https://동우개발.kr/admin/login")
     else if(team.teamId==="haejin")
-      window.open("https://haejin-general.netlify.app/admin/login")
+      window.open("https://혜진종합관리.kr/admin/login")
     else if(team.teamId==="samsung")
-      window.open("https://samsung-landscape.netlify.app/admin/login")
+      window.open("https://삼성조경.kr/admin/login")
   }
 
   if(team)
