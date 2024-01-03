@@ -5,7 +5,7 @@ import useData from "context/data";
 
 import { firestore as db } from "firebase/firebase";
 import styles from "src/post/edit.module.css"
-import { Button, CircularProgress, Grid, TextField } from "@mui/material";
+import { Button, CircularProgress, Grid, TextField, Checkbox, Switch } from "@mui/material";
 import { BasketCheck, ViewCarousel } from "mdi-material-ui";
 
 import Editor from "src/public/components/Editor";
@@ -36,7 +36,9 @@ const Edit = () => {
     content: "",
     title:"",
     author:"",
-    condition:"미게제"
+    condition:"미게제",
+    isHeight: true,
+    linkUrl:"",
   })
   const onValuesChange = (prop) => (event) => {
       setValues(prevValues => ({...prevValues, [prop]: event.target.value}))
@@ -226,19 +228,9 @@ const Edit = () => {
       ...prevValues,
       thumbnailImg: url
     }))
-    // await db.collection("data").doc(type).update({
-    //   ...values,
-    //   thumbnailImg: url
-    // })
-    // handleData(type, {
-    //   ...values,
-    //   [item]: url
-    // })
     alert("적용되었습니다.")
   }
 
-
-  
   if(isPostLoading) return (<CircularProgress />)
   else 
   return(
@@ -270,14 +262,36 @@ const Edit = () => {
             fullWidth
           />
         </Grid>
+        {type==="popup" &&
+          <>
+            <Grid item xs={12} style={{display:"flex", alignItems:"center"}}>
+              <Switch
+                checked={values.isHeight}
+                onChange={(e) => setValues(prevValues=>({...prevValues, isHeight: e.target.checked}))}
+              />
+              <p>{values.isHeight===true ? "세로형" : "가로형"}</p>
+            </Grid>
+            <Grid item xs={12} style={{display:"flex", alignItems:"center"}}>
+              <TextField
+                label="이동할 경로 (https://를 포함한 전체 주소를 입력해주세요, 없으면 빈칸으로 설정)"
+                variant="outlined"
+                value={values.linkUrl}
+                onChange={onValuesChange("linkUrl")}
+                size="small"
+                fullWidth
+              />
+            </Grid>
+          </>
+        }
         {type!=="announcement" && type!=="advertisement" && 
           <Grid item xs={12}>
-            <h1>썸네일 이미지</h1>
+            <h1>{type!=='popup' ? "썸네일 이미지" : "팝업 이미지"}</h1>
             <DropperImage imgURL={values.thumbnailImg} setImgURL={handleImgUrl} path={`data/post/${type}/${postId}`} setLoading={setIsImageLoading} />
             {isImageLoading  && <CircularProgress /> }
             
           </Grid>
         }
+        {type!=="popup" && 
         <Grid item xs={12}>
           <div className={styles.file_container}>첨부파일 : <input type="file" name="selectedFile[]" onChange={onFileChange} />
             <div style={{marginTop:"10px"}} />
@@ -297,12 +311,17 @@ const Edit = () => {
             })}
           </div>
         </Grid>
+        }
 
-        <div className={styles.border} />
+        {type!=='popup' && 
+          <>
+            <div className={styles.border} />
 
-        <Editor path={`post/${id}/${postId}`} handleChange={onContentChange} textData={values.content}/>
+            <Editor path={`post/${id}/${postId}`} handleChange={onContentChange} textData={values.content}/>
+          </>
+        }
 
-        <div style={{display:"flex", justifyContent:"space-between", width:"100%", marginTop:"100px"}}>
+        <div style={{display:"flex", justifyContent:"space-between", width:"100%", marginTop:"60px"}}>
           <div>
             <Button
               variant="contained"
@@ -329,7 +348,7 @@ const Edit = () => {
               color = "error"
               sx={{ml:"30px"}}
             >
-              게시물 삭제
+              {type!=='popup' ? "게시물 삭제" : "팝업 삭제"}
             </Button>
           </div>
         </div>

@@ -23,8 +23,10 @@ const Topbar = () => {
 
 
   useEffect(()=>{
-    if(router.pathname.includes("/post/edit"))
+    if(router.pathname.includes("/post/edit") && type!=="popup")
       setTitle("게시물 편집")
+    else if (type==="popup")
+      setTitle("팝업 관리")
     else if (type==="announcement")
       setTitle("공지사항")
     else if (type==="news")

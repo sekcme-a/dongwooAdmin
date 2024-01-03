@@ -40,6 +40,8 @@ import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined
 import { CircularProgress } from "@mui/material";
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import FindInPageOutlinedIcon from '@mui/icons-material/FindInPageOutlined';
+import WysiwygIcon from '@mui/icons-material/Wysiwyg';
+
 
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
@@ -248,6 +250,15 @@ const Navbar = () => {
             </ListItemButton>
           </>
         }
+
+        <ListItemButton onClick={()=>router.push(`/${team.teamId}/post/popup`)} >
+          <ListItemIcon>
+            <WysiwygIcon />
+          </ListItemIcon>
+          <ListItemText primary="팝업 관리" />
+        </ListItemButton>
+
+
 
         <ListItemButton onClick={onEditHomepageClick} >
           <ListItemIcon>

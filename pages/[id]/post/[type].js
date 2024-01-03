@@ -74,12 +74,16 @@ const Posts = () => {
   return(
     <>
       <div className={styles.header_container}>
+        {type!=='popup' ? 
         <h1>게제중 게시물 : {publishedPostCount}개 / 미게제 게시물 : {unpublishedPostCount}개</h1>
+        :
+        <h1>게제중 팝업 : {publishedPostCount}개 / 미게제 팝업 : {unpublishedPostCount}개</h1>
+        }
         <Button
           variant="contained"
           onClick={onNewClick}
         >
-          + 새 게시물
+          {type!=="popup" ? "+ 새 게시물" : "+ 새 팝업"}
         </Button>
 
       </div>
