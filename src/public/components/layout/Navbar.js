@@ -258,7 +258,7 @@ const Navbar = () => {
 
 
 
-        {(team.teamId==="development"||team.teamId==="haejin") && 
+        {(team.teamId==="development")&& 
           <>
             <ListItemButton onClick={()=>onClick("application")}>
               <ListItemIcon>
