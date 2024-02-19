@@ -47,7 +47,7 @@ import PostAddIcon from '@mui/icons-material/PostAdd';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import useUserData from "context/userData";
-
+import ForestOutlinedIcon from '@mui/icons-material/ForestOutlined';
 
 
 const Navbar = () => {
@@ -221,6 +221,14 @@ const Navbar = () => {
                   <NewspaperIcon />
                 </ListItemIcon>
                 <ListItemText primary="계획/설계" />
+              </ListItemButton>
+            </List>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/tree")}>
+                <ListItemIcon>
+                  <ForestOutlinedIcon />
+                </ListItemIcon>
+                <ListItemText primary="나무병원" />
               </ListItemButton>
             </List>
           </>
