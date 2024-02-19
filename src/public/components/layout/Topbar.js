@@ -29,6 +29,8 @@ const Topbar = () => {
       setTitle("팝업 관리")
     else if (type==="announcement")
       setTitle("공지사항")
+    else if (type==="advertisement")
+      setTitle("채용공고")
     else if (type==="news")
       setTitle("동행뉴스")
     else if (type==="gallery")

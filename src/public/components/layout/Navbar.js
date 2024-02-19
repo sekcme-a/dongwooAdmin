@@ -225,13 +225,23 @@ const Navbar = () => {
             </List>
           </>
           }
-          {(team.teamId==="development"||team.teamId==="haejin") && 
+          {(team.teamId==="development") && 
             <List component="div" disablePadding>
               <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/advertisement")}>
                 <ListItemIcon>
                   <CampaignOutlinedIcon />
                 </ListItemIcon>
                 <ListItemText primary="채용공고" />
+              </ListItemButton>
+            </List>
+          }
+          {(team.teamId==="haejin") && 
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/announcement")}>
+                <ListItemIcon>
+                  <CampaignOutlinedIcon />
+                </ListItemIcon>
+                <ListItemText primary="공지사항" />
               </ListItemButton>
             </List>
           }
