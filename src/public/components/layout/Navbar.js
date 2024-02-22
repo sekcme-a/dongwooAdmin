@@ -223,14 +223,14 @@ const Navbar = () => {
                 <ListItemText primary="계획/설계" />
               </ListItemButton>
             </List>
-            <List component="div" disablePadding>
+            {/* <List component="div" disablePadding>
               <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/tree")}>
                 <ListItemIcon>
                   <ForestOutlinedIcon />
                 </ListItemIcon>
                 <ListItemText primary="나무병원" />
               </ListItemButton>
-            </List>
+            </List> */}
           </>
           }
           {(team.teamId==="development") && 
