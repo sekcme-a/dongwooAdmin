@@ -179,14 +179,14 @@ const Navbar = () => {
                 <ListItemText primary="동행뉴스" />
               </ListItemButton>
             </List>
-            <List component="div" disablePadding>
+            {/* <List component="div" disablePadding>
               <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/gallery")}>
                 <ListItemIcon>
                   <NewspaperIcon />
                 </ListItemIcon>
                 <ListItemText primary="동우사보" />
               </ListItemButton>
-            </List>
+            </List> */}
             <List component="div" disablePadding>
               <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/24h")}>
                 <ListItemIcon>
