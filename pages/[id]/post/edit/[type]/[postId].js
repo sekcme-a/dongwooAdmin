@@ -291,7 +291,7 @@ const Edit = () => {
         </Grid>
         <Grid item xs={12} md={4} >
           <TextField
-            label="게시일"
+            label="게제일"
             variant="outlined"
             error={error.type==="publishedAt"}
             helperText={error.type!=="publishedAt" ? "" : error.message}
