@@ -54,17 +54,17 @@ const Edit = () => {
   const handleError = (type, message) => { setError({type: type, message: message})}
   //for inputs*****
 
-  // useEffect(()=> {
-  //   const asdf = async () => {
-  //     const query = await db.collection("team").doc("samsung").collection("thumbnails").get()
-  //     query.docs.map(doc => {
-  //       db.collection("team").doc("samsung").collection("thumbnails").doc(doc.id).update({
-  //         publishedAt: formatDateToYYYYMMDD(doc.data().savedAt.toDate())
-  //       })
-  //     })
-  //   }
-  //   // asdf()
-  // },[])
+  useEffect(()=> {
+    const asdf = async () => {
+      const query = await db.collection("team").doc("dongwoomain").collection("posts").get()
+      query.docs.map(doc => {
+        db.collection("team").doc("dongwoomain").collection("posts").doc(doc.id).update({
+          publishedAt: formatDateToYYYYMMDD(doc.data().savedAt.toDate())
+        })
+      })
+    }
+    // asdf()
+  },[])
 
   useEffect(()=> {
     if(team&& team.teamName){
@@ -136,6 +136,7 @@ const Edit = () => {
       ...values,
       files: [...files,...prevFileList],
       type: type,
+      savedAt: new Date(),
     })
 
     batch.set(db.collection("team").doc(id).collection("thumbnails").doc(postId),{
