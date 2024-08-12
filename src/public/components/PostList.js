@@ -78,7 +78,7 @@ const ArticleList = ({list, type, countPerPage}) => {
             <div className={styles.title}>{item.title}</div>
             <div className={item.condition==="게제중" ? `${styles.condition} ${styles.published}`:styles.condition}>{item.condition}</div>
             <div className={styles.author}>{item.author}</div>
-            <div className={styles.published_at}>{formatDateToYYYYMMDD(item?.savedAt.toDate())}</div>
+            <div className={styles.published_at}>{item.publishedAt}</div>
           </li>
         ))}
 
@@ -97,7 +97,7 @@ const ArticleList = ({list, type, countPerPage}) => {
           <li key={index} onClick={()=>handleItemclick(item.id)}>
             <div className={styles.title}>{item.title}</div>
             <div className={item.condition==="게제중" ? `${styles.condition} ${styles.published}`:styles.condition}>{item.condition}</div>
-            <div className={styles.published_at}>{formatDateToYYYYMMDD(item?.savedAt.toDate())}</div>
+            <div className={styles.published_at}>{item.publishedAt}</div>
           </li>
         ))}
 

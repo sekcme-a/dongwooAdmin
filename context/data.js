@@ -49,7 +49,7 @@ export function DataProvider(props){
 
     const fetch_thumbnails_list = async(type) => {
       console.log(type)
-      const query = await db.collection("team").doc(id).collection("thumbnails").where("type","==",type).orderBy("savedAt", "desc").get()
+      const query = await db.collection("team").doc(id).collection("thumbnails").where("type","==",type).orderBy("publishedAt", "desc").orderBy("savedAt", "desc").get()
       const list = query.docs.map(doc => ({...doc.data(), id: doc.id}))
       setThumbnails({...thumbnails, [type]: [...list]})
     }

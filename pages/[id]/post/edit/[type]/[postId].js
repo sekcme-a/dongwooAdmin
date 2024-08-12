@@ -39,6 +39,7 @@ const Edit = () => {
     condition:"미게제",
     isHeight: true,
     linkUrl:"",
+    publishedAt: formatDateToYYYYMMDD(new Date())
   })
   const onValuesChange = (prop) => (event) => {
       setValues(prevValues => ({...prevValues, [prop]: event.target.value}))
@@ -53,6 +54,17 @@ const Edit = () => {
   const handleError = (type, message) => { setError({type: type, message: message})}
   //for inputs*****
 
+  // useEffect(()=> {
+  //   const asdf = async () => {
+  //     const query = await db.collection("team").doc("samsung").collection("thumbnails").get()
+  //     query.docs.map(doc => {
+  //       db.collection("team").doc("samsung").collection("thumbnails").doc(doc.id).update({
+  //         publishedAt: formatDateToYYYYMMDD(doc.data().savedAt.toDate())
+  //       })
+  //     })
+  //   }
+  //   // asdf()
+  // },[])
 
   useEffect(()=> {
     if(team&& team.teamName){
@@ -116,6 +128,7 @@ const Edit = () => {
 
   const onSaveButtonClick = async () => {
     setIsLoading(true)
+    console.log("hasdf")
     const files = await uploadFiles()
 
     const batch = db.batch()
@@ -123,21 +136,21 @@ const Edit = () => {
       ...values,
       files: [...files,...prevFileList],
       type: type,
-      savedAt: new Date,
     })
 
     batch.set(db.collection("team").doc(id).collection("thumbnails").doc(postId),{
       title: values.title,
-      savedAt: new Date,
+      publishedAt: values.publishedAt,
+      savedAt: new Date(),
       type: type,
       condition: values.condition,
+      author: values.author,
     } )
 
     await batch.commit()
     setValues({
       ...values,
       files:  [...files,...prevFileList],
-      savedAt: new Date,
     })
     alert("성공적으로 저장되었습니다.")
     setIsLoading(false)
@@ -172,17 +185,18 @@ const Edit = () => {
     batch.set(db.collection("team").doc(id).collection("posts").doc(postId), {
       ...values,
       files:  [...files,...prevFileList],
-      savedAt: new Date,
       type: type,
-      condition: "게제중"
+      condition: "게제중",
+      savedAt: new Date()
     } )
 
     batch.set(db.collection("team").doc(id).collection("thumbnails").doc(postId), {
       title: values.title,
-      savedAt: new Date,
       author: values.author,
       type: type,
-      condition: "게제중"
+      condition: "게제중",
+      publishedAt: values.publishedAt,
+      savedAt: new Date()
     })
     
      await batch.commit()
@@ -190,7 +204,6 @@ const Edit = () => {
     setValues({
       ...values,
       files:  [...files,...prevFileList],
-      savedAt: new Date,
       condition: "게제중"
     })
     alert("성공적으로 게제되었습니다.")
@@ -231,6 +244,19 @@ const Edit = () => {
     alert("적용되었습니다.")
   }
 
+
+  function formatDateToYYYYMMDD(date) {
+    if(date instanceof Date){
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+      const day = String(date.getDate()).padStart(2, '0');
+    
+      return `${year}-${month}-${day}`;
+    } else return "-"
+  }
+
+
+
   if(isPostLoading) return (<CircularProgress />)
   else 
   return(
@@ -258,6 +284,18 @@ const Edit = () => {
             helperText={error.type!=="author" ? "" : error.message}
             value={values.author}
             onChange={onValuesChange("author")}
+            size="small"
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12} md={4} >
+          <TextField
+            label="게시일"
+            variant="outlined"
+            error={error.type==="publishedAt"}
+            helperText={error.type!=="publishedAt" ? "" : error.message}
+            value={values.publishedAt}
+            onChange={onValuesChange("publishedAt")}
             size="small"
             fullWidth
           />
