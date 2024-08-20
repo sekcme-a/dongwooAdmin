@@ -215,14 +215,14 @@ const Navbar = () => {
                 <ListItemText primary="시공/관리" />
               </ListItemButton>
             </List>
-            <List component="div" disablePadding>
+            {/* <List component="div" disablePadding>
               <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/plan")}>
                 <ListItemIcon>
                   <NewspaperIcon />
                 </ListItemIcon>
                 <ListItemText primary="계획/설계" />
               </ListItemButton>
-            </List>
+            </List> */}
             {/* <List component="div" disablePadding>
               <ListItemButton sx={{ pl: 4 }} onClick={()=>onClick("post/tree")}>
                 <ListItemIcon>
