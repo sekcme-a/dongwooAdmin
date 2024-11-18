@@ -169,7 +169,7 @@ const Edit = () => {
       let files = []
       for (let i = 0; i < fileList.length; i++){
         if (fileList[i] !== undefined) {
-          const fileRef = storage.ref().child(`post/${id}/${postId}/${i}`)
+          const fileRef = storage.ref().child(`post/${id}/${postId}/${i}.${fileList[i].file.name}`)
           await fileRef.put(fileList[i].file)
           const url = await fileRef.getDownloadURL()
           files.push({url : url, name: fileList[i].file.name})
